@@ -11,4 +11,4 @@ What's changed?
 5. Explored Redux.
 
 **TRY IT HERE:**
-## https://ant4x.github.io/robofriends/
+## https://ant4x.github.io/monster-rolodex/
