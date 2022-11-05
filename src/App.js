@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
+import { useDispatch, useSelector } from 'react-redux'
 import CardList from './components/card-list/card-list.component'
 import SearchBox from './components/search-box/search-box.component'
+import { setSearchField } from './actions'
+import './App.css'
 
 const App = () => {
 
   const [monsters, setMonsters] = useState([])
-  const [searchField, setSearchField] = useState('')
   const [filteredMonsters, setFilteredMonsters] = useState(monsters)
+
+  const dispatch = useDispatch()
+  const { searchField } = useSelector((state) => state)
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
@@ -24,7 +28,7 @@ const App = () => {
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLowerCase()
-    setSearchField(searchFieldString)
+    dispatch(setSearchField(searchFieldString))
   }
 
   return (
@@ -40,4 +44,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App
