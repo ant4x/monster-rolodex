@@ -1,17 +1,19 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import { createLogger } from 'redux-logger'
 import './index.css'
 import App from './App'
-import { searchRobots } from './reducers'
+import { searchMonsters, requestMonsters, filterMonsters } from './reducers'
 import reportWebVitals from './reportWebVitals'
 
 const logger = createLogger()
 
+const rootReducer = combineReducers({ searchMonsters, requestMonsters, filterMonsters })
+
 const store = configureStore({
-  reducer: searchRobots,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 })
 
